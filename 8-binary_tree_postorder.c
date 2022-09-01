@@ -1,6 +1,6 @@
 #include "binary_trees.h"
 /**
-* binary_tree_inorder - Node print inorder
+* binary_tree_postorder - Node print inorder
 * @tree: Pointer to the tree to print inorder
 * @func: print value
 * Return: pritn value inorder

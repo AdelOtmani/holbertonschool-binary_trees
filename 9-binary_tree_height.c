@@ -1,8 +1,7 @@
 #include "binary_trees.h"
 /**
-* binary_tree_inorder - Node print inorder
+* binary_tree_height - Node print inorder
 * @tree: Pointer to the tree to print inorder
-* @func: print value
 * Return: pritn value inorder
 */
 size_t binary_tree_height(const binary_tree_t *tree)

@@ -1,6 +1,6 @@
 #include "binary_trees.h"
 /**
-* binary_tree_nodes - Node's count
+* binary_tree_balance - Node's count
 * @tree: Pointer to the tree 
 * Return: count of node
 */
