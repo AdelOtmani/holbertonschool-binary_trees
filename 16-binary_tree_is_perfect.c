@@ -74,16 +74,16 @@ size_t binary_tree_nodes(const binary_tree_t *tree)
 */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int x = 1, h;
+	size_t x = 1, h;
 
 	h = binary_tree_height(tree);
 
 	while (h-- != 0)
 	{
-		x << 1;
+		x = x << 1;
 	}
 
 	return (!binary_tree_balance(tree) &&
 		binary_tree_is_full(tree) &&
-		binary_tree_nodes(tree) == x ? 1 : 0);
+		binary_tree_nodes(tree) == x - 1 ? 1 : 0);
 }
