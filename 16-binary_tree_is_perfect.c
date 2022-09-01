@@ -1,14 +1,5 @@
 #include "binary_trees.h"
 
-/**
-* binary_tree_is_leaf - Node is a leaf
-* @node: Pointer to the node
-* Return: 1 if is a leaf or 0 otherwise
-*/
-int binary_tree_is_leaf(const binary_tree_t *node)
-{
-	return (node && (!node->left && !node->right) ? 1 : 0);
-}
 
 /**
 * binary_tree_height - Node print inorder
@@ -35,7 +26,7 @@ int binary_tree_balance(const binary_tree_t *tree)
 {
 	int b_right = 0, b_left = 0;
 
-	if (!tree || binary_tree_is_leaf(tree))
+	if (!tree || (tree && (!tree->left && !tree->right) ? 1 : 0))
 		return (0);
 
 	if (tree->left)
@@ -57,24 +48,42 @@ int binary_tree_is_full(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	if (binary_tree_is_leaf(tree))
+	if ((tree && (!tree->left && !tree->right) ? 1 : 0))
 		return (1);
 
 	return (binary_tree_is_full(tree->left) +
 		binary_tree_is_full(tree->right) == 2 ? 1 : 0);
 }
 
+/**
+* binary_tree_nodes - Node's count
+* @tree: Pointer to the tree
+* Return: count of node
+*/
+size_t binary_tree_nodes(const binary_tree_t *tree)
+{
+	if (!tree || (tree && (!tree->left && !tree->right) ? 1 : 0))
+		return (0);
 
+	return (1 + binary_tree_nodes(tree->left) + binary_tree_nodes(tree->right));
+}
 /**
 * binary_tree_is_perfect - Node's count
 * @tree: Pointer to the tree
 * Return: count of node
 */
-
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
+	int x = 1, h;
+
+	h = binary_tree_height(tree);
+
+	while (h-- != 0)
+	{
+		x << 1;
+	}
+
 	return (!binary_tree_balance(tree) &&
 		binary_tree_is_full(tree) &&
-		binary_tree_is_perfect(tree->left) &&
-		binary_tree_is_perfect(tree->right) ? 1 : 0);
+		binary_tree_nodes(tree) == x ? 1 : 0);
 }
