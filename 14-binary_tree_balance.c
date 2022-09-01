@@ -16,7 +16,7 @@ int binary_tree_is_leaf(const binary_tree_t *node)
 * Return: pritn value inorder
 */
 size_t binary_tree_height(const binary_tree_t *tree)
-{	
+{
 	int n_left, n_right;
 
 	if (!tree || (!tree->right && !tree->left))
@@ -28,7 +28,7 @@ size_t binary_tree_height(const binary_tree_t *tree)
 
 /**
 * binary_tree_balance - Node's count
-* @tree: Pointer to the tree 
+* @tree: Pointer to the tree
 * Return: count of node
 */
 int binary_tree_balance(const binary_tree_t *tree)
