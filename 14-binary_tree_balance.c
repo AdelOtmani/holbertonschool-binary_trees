@@ -1,31 +1,21 @@
 #include "binary_trees.h"
-
 /**
- * binary_tree_balance - dsdsd
- * @tree: sdsdsd
- * Return: un truc pértinent
- */
+* binary_tree_nodes - Node's count
+* @tree: Pointer to the tree 
+* Return: count of node
+*/
 int binary_tree_balance(const binary_tree_t *tree)
 {
-if (tree)
-return (binary_tree_height(tree->left) - binary_tree_height(tree->right));
-return (0);
-}
+	int b_right = 0, b_left = 0;
 
-/**
-* binary_tree_height - sdsds
-* @tree: A pointer to the root node of the tree to measure the height
-* Return: return: un truc pértinent
-*/
-size_t binary_tree_height(const binary_tree_t *tree)
-{
-if (tree)
-{
-size_t l = 0, r = 0;
+	if (!tree || binary_tree_is_leaf(tree))
+		return (0);
 
-l = tree->left ? 1 + binary_tree_height(tree->left) : 1;
-r = tree->right ? 1 + binary_tree_height(tree->right) : 1;
-return ((l > r) ? l : r);
-}
-return (0);
+	if (tree->left)
+		b_left = 1 + binary_tree_height(tree->left);
+
+	if (tree->right)
+		b_right = 1 + binary_tree_height(tree->right);
+
+	return (b_left - b_right);
 }
